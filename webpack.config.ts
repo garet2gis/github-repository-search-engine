@@ -8,28 +8,19 @@ import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-//import TerserWebpackPlugin from 'terser-webpack-plugin';
-//import OptimizeCSSAssetsWebpackPlugin from 'optimize-css-assets-webpack-plugin';
-
 
 interface Configuration extends WebpackConfiguration {
     devServer?: WebpackDevServerConfiguration;
 }
 
-const isDev = process.env.NODE_ENV === 'development';
-const isProd = !isDev
 
 const config: Configuration = {
+    mode: 'development',
     entry: "./src/index.tsx",
     optimization: {
         splitChunks: {
             chunks: 'all',
         },
-
-        // minimizer: [
-        //     new TerserWebpackPlugin() for prod
-        // ]
-
     },
     module: {
         rules: [
@@ -80,15 +71,14 @@ const config: Configuration = {
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            minify: {
-                collapseWhitespace: isProd
-            }
         }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
                 patterns: [
                     {
-                        from: path.resolve(__dirname, 'src/assets/favicon.ico')
+                        from: '**/*',
+                        context: path.resolve(__dirname, 'src', 'assets'),
+                        to: './assets',
                     }
                 ]
             }
@@ -97,7 +87,7 @@ const config: Configuration = {
             filename: '[name].[contenthash].css'
         })
     ],
-    devtool: isDev ? 'source-map' : false,
+    devtool: 'source-map',
 };
 
 export default config;
