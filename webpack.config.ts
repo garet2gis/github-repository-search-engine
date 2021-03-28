@@ -1,7 +1,6 @@
 import path from "path";
 import {Configuration as WebpackConfiguration} from "webpack";
 import {Configuration as WebpackDevServerConfiguration} from "webpack-dev-server";
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
@@ -14,8 +13,6 @@ interface Configuration extends WebpackConfiguration {
 
 
 const config: Configuration = {
-    mode: 'development',
-    entry: "./src/index.tsx",
     optimization: {
         splitChunks: {
             chunks: 'all',
@@ -52,23 +49,7 @@ const config: Configuration = {
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
     },
-    output: {
-        path: path.resolve(__dirname, "build"),
-        filename: "[name].[contenthash].js",
-    },
-    devServer: {
-        contentBase: path.join(__dirname, "build"),
-        compress: true,
-        port: 4000,
-        hot:true,
-    },
     plugins: [
-        new ForkTsCheckerWebpackPlugin({
-            async: false,
-            eslint: {
-                files: "./src/**/*.{ts,tsx,js,jsx}",
-            },
-        }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
         }),
@@ -83,11 +64,7 @@ const config: Configuration = {
                 ]
             }
         ),
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
-        })
     ],
-    devtool: 'source-map',
 };
 
 export default config;

@@ -14,6 +14,7 @@ const UserList: React.FC = () => {
     if (error){
         return <h1>{error}</h1>
     }
+    console.log('USER render')
     return (
         <div>
             {users.map(user=>

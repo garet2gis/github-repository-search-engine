@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useTypesSelector} from "../hooks/useTypesSelector";
 import {useActions} from "../hooks/useActions";
+import '../styles/styles.css';
 
 const TodoList: React.FC = () => {
     const {page, error, loading, todos, limit} = useTypesSelector(state => state.todo);
@@ -18,8 +19,9 @@ const TodoList: React.FC = () => {
     if (error) {
         return <h1>{error}</h1>
     }
+    console.log('TODO render')
     return (
-        <div>
+        <div className={'some'}>
             {todos.map(todo =>
                 <div key = {todo.id}>
                     {todo.id} - {todo.title}

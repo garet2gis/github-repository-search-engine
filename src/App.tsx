@@ -1,12 +1,14 @@
 import React from "react";
-import './styles/styles.css';
+
 import UserList from "./components/UserList";
 import TodoList from "./components/TodoList";
-
+import { hot } from "react-hot-loader";
 
 const App : React.FC = () => {
+    const a = 'react6';
     return (
-        <div className={'some'}>
+        <div>
+            {a}
             <UserList/>
             <hr/>
             <TodoList/>
@@ -14,4 +16,6 @@ const App : React.FC = () => {
     );
 }
 
-export default App;
+
+declare let module: Record<string, unknown>;
+export default hot(module)(App);

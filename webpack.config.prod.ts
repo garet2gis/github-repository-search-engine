@@ -3,10 +3,14 @@ import TerserWebpackPlugin from 'terser-webpack-plugin';
 import OptimizeCSSAssetsWebpackPlugin from 'optimize-css-assets-webpack-plugin';
 import common from './webpack.config'
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from "path";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 
 const config = merge(common, {
     mode: 'production',
+    entry: "./src/index.tsx",
+    devtool: false,
     optimization: {
         splitChunks: {
             chunks: 'all',
@@ -16,7 +20,6 @@ const config = merge(common, {
             new OptimizeCSSAssetsWebpackPlugin(),
         ],
     },
-    devtool: false,
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
@@ -27,7 +30,14 @@ const config = merge(common, {
                 useShortDoctype: true,
             }
         }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css'
+        }),
     ],
+    output: {
+        path: path.resolve(__dirname, "build"),
+        filename: "[name].[contenthash].js",
+    },
 });
 
 export default config;
