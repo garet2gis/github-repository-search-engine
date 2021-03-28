@@ -13,21 +13,21 @@ export enum TodoActionTypes {
     SET_TODO_PAGE = 'SET_TODO_PAGE',
 }
 
-interface FetchTodoAction {
+export interface FetchTodoAction {
     type: TodoActionTypes.FETCH_TODOS;
 }
 
-interface FetchTodoSuccessAction {
+export interface FetchTodoSuccessAction {
     type: TodoActionTypes.FETCH_TODOS_SUCCESS;
     payload: any[];
 }
 
-interface FetchTodoErrorAction {
+export interface FetchTodoErrorAction {
     type: TodoActionTypes.FETCH_TODOS_ERROR;
     payload: string;
 }
 
-interface SetTodoPageAction {
+export interface SetTodoPageAction {
     type: TodoActionTypes.SET_TODO_PAGE;
     payload: number;
 }

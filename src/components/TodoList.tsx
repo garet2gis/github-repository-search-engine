@@ -5,13 +5,13 @@ import '../styles/styles.css';
 
 const TodoList: React.FC = () => {
     const {page, error, loading, todos, limit} = useTypesSelector(state => state.todo);
-    const {fetchTodos,setTodoPage} = useActions();
+    const {getTodos,setTodoPage} = useActions();
 
     const pages = [1,2,3,4,5];
 
     useEffect(()=>{
-        fetchTodos(page,limit);
-    },[page]);
+        getTodos(page,limit);
+    },[page,limit]);
 
     if (loading) {
         return <h1>Идет загрузка...</h1>

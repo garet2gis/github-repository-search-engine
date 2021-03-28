@@ -4,10 +4,12 @@ import {useActions} from "../hooks/useActions";
 
 const UserList: React.FC = () => {
     const {users, error, loading} = useTypesSelector(state => state.user);
-    const {fetchUsers} = useActions()
+    const {getUsers} = useActions()
+
     useEffect(()=>{
-        fetchUsers();
+        getUsers();
     },[])
+
     if (loading){
         return <h1>Идет загрузка...</h1>
     }
