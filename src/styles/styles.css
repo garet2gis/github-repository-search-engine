@@ -1,3 +1,8 @@
-.some{
-    color:darkred;
+body{
+    display:flex;
+    justify-content:center;
+}
+
+.container{
+    width: 1200px;
 }

@@ -1,18 +1,16 @@
 import React from "react";
+import {hot} from "react-hot-loader";
+import {BrowserRouter, Route} from 'react-router-dom'
+import RepoSearch from "./components/RepoSearch";
+import './styles/styles.css'
 
-import UserList from "./components/UserList";
-import TodoList from "./components/TodoList";
-import { hot } from "react-hot-loader";
-
-const App : React.FC = () => {
-    const a = 'react6';
+const App: React.FC = () => {
     return (
-        <div>
-            {a}
-            <UserList/>
-            <hr/>
-            <TodoList/>
-        </div>
+        <BrowserRouter>
+            <div className={'container'}>
+                <Route path='/' component={RepoSearch}/>
+            </div>
+        </BrowserRouter>
     );
 }
 

@@ -4,6 +4,6 @@ import ActionCreators from '../store/action-creators/index'
 
 export const useActions = () : typeof ActionCreators =>{
     const dispatch = useDispatch();
-    return bindActionCreators(ActionCreators, dispatch);
+    return bindActionCreators(ActionCreators, dispatch)
 }
 

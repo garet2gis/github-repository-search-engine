@@ -1,7 +1,6 @@
-import * as UserActionCreator from './user';
-import * as TodoActionCreator from './todo';
+import * as ReposActionCreator from "./repos";
 
 export default {
-    ...TodoActionCreator,
-    ...UserActionCreator,
+
+    ...ReposActionCreator
 }
