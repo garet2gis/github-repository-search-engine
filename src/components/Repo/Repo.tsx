@@ -1,9 +1,9 @@
 import React from 'react';
-import {RepoType} from "../../types/repoType";
+import {RepoShortType} from "../../types/SearchReposType";
 import './repo.css'
 
 type PropsType = {
-    repo: RepoType
+    repo: RepoShortType
 }
 
 

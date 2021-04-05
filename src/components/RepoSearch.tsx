@@ -9,7 +9,7 @@ const RepoSearch: React.FC = () => {
     const items = useTypesSelector(state => state.repo.items);
 
     useEffect(()=>{
-        getRepos();
+        getRepos(1,3);
     },[])
 
     return (

@@ -21,10 +21,10 @@ const config: Configuration = {
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.(css|less)$/,
                 use: [{
                     loader: MiniCssExtractPlugin.loader,
-                }, 'css-loader']
+                }, 'css-loader', 'less-loader']
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,
