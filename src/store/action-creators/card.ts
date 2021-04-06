@@ -23,7 +23,6 @@ export const getCurrentRepo = (username : string,repoName : string): ThunkAction
 export const getContributors = (username : string,repoName : string): ThunkAction<Promise<void>, RootState, unknown, CardAction> => {
     return async (dispatch) =>{
         const response = await reposAPI.getContributors(username, repoName)
-        debugger
         dispatch(setContributors(response.data))
     }
 }

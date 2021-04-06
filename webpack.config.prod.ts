@@ -35,7 +35,7 @@ const config = merge(common, {
         }),
     ],
     output: {
-        path: path.resolve(__dirname, "build"),
+        path: path.resolve(__dirname, "dist"),
         filename: "[name].[contenthash].js",
     },
 });

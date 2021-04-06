@@ -20,6 +20,7 @@ const setIsFetching = (bool: boolean): SetIsFetching =>
 export const setCurrentPage = (page: number): SetCurrentPage =>
     ({type: ReposActionTypes.SET_CURRENT_PAGE, payload: page})
 
+
 const setFetchError = (bool: boolean): SetFetchError =>
     ({type: ReposActionTypes.SET_FETCH_ERROR, payload: bool})
 
