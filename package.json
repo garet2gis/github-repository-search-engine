@@ -8,14 +8,13 @@
   "description": "",
   "private": true,
   "main": "index.js",
-  "homepage": "http://garet2gis.github.io/github-repository-search-engine",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --config webpack.config.dev.ts",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.ts",
     "watch": "cross-env NODE_ENV=development webpack --watch --config webpack.config.dev.ts",
     "start": "cross-env NODE_ENV=development webpack serve --open --config webpack.config.dev.ts",
     "stats": "webpack --config webpack.config.prod.ts --json > stats.json && webpack-bundle-analyzer stats.json",
-    "deploy": "npm run build && npm run deploy"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "author": "Daniil Mukovsky",
   "license": "ISC",
