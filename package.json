@@ -12,7 +12,8 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.ts",
     "watch": "cross-env NODE_ENV=development webpack --watch --config webpack.config.dev.ts",
     "start": "cross-env NODE_ENV=development webpack serve --open --config webpack.config.dev.ts",
-    "stats": "webpack --config webpack.config.prod.ts --json > stats.json && webpack-bundle-analyzer stats.json"
+    "stats": "webpack --config webpack.config.prod.ts --json > stats.json && webpack-bundle-analyzer stats.json",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Daniil Mukovsky",
   "license": "ISC",
