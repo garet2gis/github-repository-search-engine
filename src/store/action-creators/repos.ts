@@ -17,7 +17,7 @@ export const setRepos = (payload: SearchReposType): SetReposAction =>
 const setIsFetching = (bool: boolean): SetIsFetching =>
     ({type: ReposActionTypes.SET_IS_FETCHING, payload: bool})
 
-const setCurrentPage = (page: number): SetCurrentPage =>
+export const setCurrentPage = (page: number): SetCurrentPage =>
     ({type: ReposActionTypes.SET_CURRENT_PAGE, payload: page})
 
 const setFetchError = (bool: boolean): SetFetchError =>
@@ -25,14 +25,19 @@ const setFetchError = (bool: boolean): SetFetchError =>
 
 
 export const getRepos = (currentPage: number, perPage: number, searchQuery?: string): ThunkAction<Promise<void>, RootState, unknown, ReposAction> => {
+    if(!searchQuery)
+        searchQuery = "stars:%3E1"
     return async (dispatch) => {
         try {
+            dispatch(setIsFetching(true))
             const response = await reposAPI.getRepos(searchQuery, currentPage, perPage);
             dispatch(setRepos(response.data));
         } catch (e) {
-            console.log('error');
+            dispatch(setIsFetching(true))
+            dispatch(setIsFetching(false))
+            setTimeout(()=>{
+                dispatch(setFetchError(false))
+            },2000)
         }
     }
 }
-
-//export const getCurrentRepo =
