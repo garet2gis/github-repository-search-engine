@@ -1,5 +1,5 @@
-import {ReposAction, ReposActionTypes} from "../../types/repos";
-import {RepoShortType} from "../../types/SearchReposType";
+import {ReposActionTypes, RepoShortType} from "../../types/repos";
+import { ReposAction } from "../action-creators/repos";
 
 const initialState = {
     items: [] as Array<RepoShortType>,

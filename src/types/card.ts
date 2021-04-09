@@ -1,20 +1,11 @@
-import {FullRepoType} from "./FullRepoType";
-import {ContributorType} from "./ContributorType";
-
 export enum CardActionTypes {
     SET_CARD = 'SET_CARD',
     SET_CONTRIBUTOR = 'SET_CONTRIBUTOR'
 }
 
-
-export type SetCardAction = {
-    type: CardActionTypes.SET_CARD
-    payload: FullRepoType
-}
-
-export type SetContributorAction = {
-    type: CardActionTypes.SET_CONTRIBUTOR
-    payload: Array<ContributorType>
-}
-
-export type CardAction = SetCardAction | SetContributorAction
+export type ContributorType =
+    {
+        gists_url: string; repos_url: string; following_url: string; starred_url: string; login: string; followers_url: string;
+        type: string; url: string; subscriptions_url: string; received_events_url: string; contributions: number; avatar_url: string;
+        events_url: string; html_url: string; site_admin: boolean; id: number; gravatar_id: string; node_id: string; organizations_url: string
+    }

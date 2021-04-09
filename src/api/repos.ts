@@ -1,8 +1,8 @@
 import instance from "./instance";
-import {SearchReposType} from "../types/SearchReposType";
-import {FullRepoType} from "../types/FullRepoType";
 import {AxiosResponse} from "axios";
-import {ContributorType} from "../types/ContributorType";
+import {FullRepoType, SearchReposType } from "../types/repos";
+import { ContributorType } from "../types/card";
+
 
 export const reposAPI = {
     getRepos: (searchQuery = 'stars:%3E1', currentPage: number, perPage: number): Promise<AxiosResponse<SearchReposType>> => {

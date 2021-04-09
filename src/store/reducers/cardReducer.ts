@@ -1,6 +1,7 @@
-import { CardAction, CardActionTypes } from "../../types/card";
-import {FullRepoType} from "../../types/FullRepoType";
-import {ContributorType} from "../../types/ContributorType";
+import { CardActionTypes, ContributorType } from "../../types/card";
+import { FullRepoType } from "../../types/repos";
+
+import { CardAction } from "../action-creators/card";
 
 const initialState = {
     repo: {} as FullRepoType,

@@ -25,4 +25,5 @@ const App: React.FC = () => {
 
 
 declare let module: Record<string, unknown>;
+
 export default hot(module)(App);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import {RepoShortType} from "../../types/SearchReposType";
+import { RepoShortType } from '../../types/repos';
 import './repo.less'
 
 type PropsType = {

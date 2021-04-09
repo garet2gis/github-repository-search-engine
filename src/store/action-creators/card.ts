@@ -1,28 +1,34 @@
-import {FullRepoType} from "../../types/FullRepoType";
 import {ThunkAction} from "redux-thunk";
 import {RootState} from "../reducers";
 import {reposAPI} from "../../api/repos";
-import {CardAction, CardActionTypes, SetCardAction, SetContributorAction} from "../../types/card";
-import {ContributorType} from "../../types/ContributorType";
+import {CardActionTypes, ContributorType} from "../../types/card";
 
-export const setCard = (payload: FullRepoType): SetCardAction =>
-    ({type: CardActionTypes.SET_CARD, payload})
+import {PropertiesType} from "../../types/utils";
+import { FullRepoType } from "../../types/repos";
 
-export const setContributors = (payload: Array<ContributorType>): SetContributorAction =>
-    ({type: CardActionTypes.SET_CONTRIBUTOR, payload})
+const CardActionCreators = {
+    setCard: (payload: FullRepoType) =>
+        ({type: CardActionTypes.SET_CARD, payload} as const),
+    setContributors: (payload: Array<ContributorType>) =>
+        ({type: CardActionTypes.SET_CONTRIBUTOR, payload} as const)
+}
 
 
+export type CardAction = ReturnType<PropertiesType<typeof CardActionCreators>>
 
-export const getCurrentRepo = (username : string,repoName : string): ThunkAction<Promise<void>, RootState, unknown, CardAction> => {
-    return async (dispatch) =>{
+
+//thunks
+export const getCurrentRepo = (username: string, repoName: string): ThunkAction<Promise<void>, RootState, unknown, CardAction> => {
+    return async (dispatch) => {
         const response = await reposAPI.getCurrentRepo(username, repoName)
-        dispatch(setCard(response.data))
+        dispatch(CardActionCreators.setCard(response.data))
     }
 }
 
-export const getContributors = (username : string,repoName : string): ThunkAction<Promise<void>, RootState, unknown, CardAction> => {
-    return async (dispatch) =>{
+export const getContributors = (username: string, repoName: string): ThunkAction<Promise<void>, RootState, unknown, CardAction> => {
+    return async (dispatch) => {
         const response = await reposAPI.getContributors(username, repoName)
-        dispatch(setContributors(response.data))
+        dispatch(CardActionCreators.setContributors(response.data))
     }
 }
+

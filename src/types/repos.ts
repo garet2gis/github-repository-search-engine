@@ -1,5 +1,3 @@
-import {SearchReposType} from "./SearchReposType";
-
 export enum ReposActionTypes {
     SET_REPOS = 'SET_REPOS',
     SET_IS_FETCHING = "SET_IS_FETCHING",
@@ -7,29 +5,329 @@ export enum ReposActionTypes {
     SET_FETCH_ERROR = "SET_FETCH_ERROR"
 }
 
-
-export type SetReposAction = {
-    type: ReposActionTypes.SET_REPOS
-    payload: SearchReposType
+export type FullRepoType = {
+    stargazers_count: number;
+    is_template: boolean;
+    pushed_at: string;
+    subscription_url: string;
+    language: null;
+    branches_url: string;
+    issue_comment_url: string;
+    labels_url: string;
+    subscribers_url: string;
+    permissions: {
+        pull: boolean;
+        admin: boolean;
+        push: boolean
+    };
+    releases_url: string;
+    svn_url: string;
+    id: number;
+    archive_url: string;
+    git_refs_url: string;
+    forks_url: string;
+    visibility: string;
+    statuses_url: string;
+    ssh_url: string;
+    full_name: string;
+    size: number;
+    template_repository: {
+        stargazers_count: number;
+        is_template: boolean;
+        pushed_at: string;
+        subscription_url: string;
+        language: null;
+        branches_url: string;
+        issue_comment_url: string;
+        allow_rebase_merge: boolean;
+        labels_url: string;
+        subscribers_url: string;
+        permissions:
+            {
+                pull: boolean;
+                admin: boolean;
+                push: boolean
+            };
+        temp_clone_token: string;
+        releases_url: string;
+        svn_url: string;
+        subscribers_count: number;
+        id: number;
+        forks: number;
+        archive_url: string;
+        allow_merge_commit: boolean;
+        git_refs_url: string;
+        forks_url: string;
+        visibility: string;
+        statuses_url: string;
+        network_count: number;
+        ssh_url: string;
+        license:
+            {
+                html_url: string;
+                name: string;
+                spdx_id: string;
+                key: string;
+                url: string;
+                node_id: string
+            };
+        full_name: string;
+        size: number;
+        languages_url: string;
+        html_url: string;
+        collaborators_url: string;
+        clone_url: string;
+        name: string;
+        pulls_url: string;
+        default_branch: string;
+        hooks_url: string;
+        trees_url: string;
+        tags_url: string;
+        private: boolean;
+        contributors_url: string;
+        has_downloads: boolean;
+        notifications_url: string;
+        open_issues_count: number;
+        description: string;
+        watchers: number;
+        created_at: string;
+        deployments_url: string;
+        keys_url: string;
+        has_projects: boolean;
+        archived: boolean;
+        has_wiki: boolean;
+        updated_at: string;
+        comments_url: string;
+        stargazers_url: string;
+        disabled: boolean;
+        delete_branch_on_merge: boolean;
+        git_url: string;
+        has_pages: boolean;
+        owner: {
+            gists_url: string;
+            repos_url: string;
+            following_url: string;
+            starred_url: string;
+            login: string;
+            followers_url: string;
+            type: string;
+            url: string;
+            subscriptions_url: string;
+            received_events_url: string;
+            avatar_url: string;
+            events_url: string;
+            html_url: string;
+            site_admin: boolean;
+            id: number;
+            gravatar_id: string;
+            node_id: string;
+            organizations_url: string
+        };
+        allow_squash_merge: boolean;
+        commits_url: string;
+        compare_url: string;
+        git_commits_url: string;
+        topics: string[];
+        blobs_url: string;
+        git_tags_url: string;
+        merges_url: string;
+        downloads_url: string;
+        has_issues: boolean;
+        url: string;
+        contents_url: string;
+        mirror_url: string;
+        milestones_url: string;
+        teams_url: string;
+        fork: boolean;
+        issues_url: string;
+        events_url: string;
+        issue_events_url: string;
+        assignees_url: string;
+        open_issues: number;
+        watchers_count: number;
+        node_id: string;
+        homepage: string;
+        forks_count: number
+    };
+    languages_url: string;
+    html_url: string;
+    collaborators_url: string;
+    clone_url: string;
+    name: string;
+    pulls_url: string;
+    default_branch: string;
+    hooks_url: string;
+    trees_url: string;
+    tags_url: string;
+    private: boolean;
+    contributors_url: string;
+    has_downloads: boolean;
+    notifications_url: string;
+    open_issues_count: number;
+    description: string;
+    created_at: string;
+    deployments_url: string;
+    keys_url: string;
+    has_projects: boolean;
+    archived: boolean;
+    has_wiki: boolean;
+    updated_at: string;
+    comments_url: string;
+    stargazers_url: string;
+    disabled: boolean;
+    git_url: string;
+    has_pages: boolean;
+    owner: {
+        gists_url: string;
+        repos_url: string;
+        following_url: string;
+        starred_url: string;
+        login: string;
+        followers_url: string;
+        type: string;
+        url: string;
+        subscriptions_url: string;
+        received_events_url: string;
+        avatar_url: string;
+        events_url: string;
+        html_url: string;
+        site_admin: boolean;
+        id: number;
+        gravatar_id: string;
+        node_id: string;
+        organizations_url: string
+    };
+    commits_url: string;
+    compare_url: string;
+    git_commits_url: string;
+    topics: string[];
+    blobs_url: string;
+    git_tags_url: string;
+    merges_url: string;
+    downloads_url: string;
+    has_issues: boolean;
+    url: string;
+    contents_url: string;
+    mirror_url: string;
+    milestones_url: string;
+    teams_url: string;
+    fork: boolean;
+    issues_url: string;
+    events_url: string;
+    issue_events_url: string;
+    assignees_url: string;
+    watchers_count: number;
+    node_id: string;
+    homepage: string;
+    forks_count: number
 }
 
-export type SetIsFetching = {
-    type: ReposActionTypes.SET_IS_FETCHING
-    payload: boolean
+export type RepoShortType = {
+    id: number
+    node_id: string
+    name: string
+    full_name: string
+    owner: {
+        login: string
+        id: number
+        node_id: string
+        avatar_url: string
+        gravatar_id: string
+        url: string
+        received_events_url: string
+        type: string
+        html_url: string
+        followers_url: string
+        following_url: string
+        gists_url: string
+        starred_url: string
+        subscriptions_url: string
+        organizations_url: string
+        repos_url: string
+        events_url: string
+        site_admin: boolean
+    },
+    private: boolean,
+    html_url: string,
+    description: string,
+    fork: boolean,
+    url: string,
+    created_at: string,
+    updated_at: string,
+    pushed_at: string,
+    homepage: string,
+    size: number,
+    stargazers_count: number,
+    watchers_count: number,
+    language: string,
+    forks_count: number
+    open_issues_count: number
+    master_branch: string
+    default_branch: string
+    score: number
+    archive_url: string
+    assignees_url: string
+    blobs_url: string
+    branches_url: string
+    collaborators_url: string
+    comments_url: string
+    commits_url: string
+    compare_url: string
+    contents_url: string
+    contributors_url: string
+    deployments_url: string
+    downloads_url: string
+    events_url: string
+    forks_url: string
+    git_commits_url: string
+    git_refs_url: string
+    git_tags_url: string
+    git_url: string
+    issue_comment_url: string
+    issue_events_url: string
+    issues_url: string
+    keys_url: string
+    labels_url: string
+    languages_url: string
+    merges_url: string
+    milestones_url: string
+    notifications_url: string
+    pulls_url: string
+    releases_url: string
+    ssh_url: string
+    stargazers_url: string
+    statuses_url: string
+    subscribers_url: string
+    subscription_url: string
+    tags_url: string
+    teams_url: string
+    trees_url: string
+    clone_url: string
+    mirror_url: string
+    hooks_url: string
+    svn_url: string
+    forks: number
+    open_issues: number
+    watchers: number
+    has_issues: boolean
+    has_projects: boolean
+    has_pages: boolean
+    has_wiki: boolean
+    has_downloads: boolean
+    archived: boolean
+    disabled: boolean
+    license: {
+        key: string
+        name: string
+        url: string
+        spdx_id: string
+        node_id: string
+        html_url: string
+    }
 }
 
-export type SetCurrentPage = {
-    type: ReposActionTypes.SET_CURRENT_PAGE
-    payload: number
+export type SearchReposType = {
+    total_count: number
+    incomplete_results: boolean
+    items: Array<RepoShortType>
 }
-
-export type SetFetchError = {
-    type: ReposActionTypes.SET_FETCH_ERROR
-    payload: boolean
-}
-
-export type ReposAction =
-    SetReposAction
-    | SetIsFetching
-    | SetCurrentPage
-    | SetFetchError
